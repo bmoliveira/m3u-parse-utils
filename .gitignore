@@ -9,6 +9,6 @@ pubspec.lock
 build/
 
 .idea/*
-docs/*
+doc/*
 
 *.iml
