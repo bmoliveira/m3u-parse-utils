@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 /// Exception thrown when an error occurs due to invalid Header format of a file.
 class InvalidFormatException implements Exception {
   /// Type of Error
@@ -12,8 +10,8 @@ class InvalidFormatException implements Exception {
   String customMessage;
 
   /// Creates the exception with the given parameters.
-  InvalidFormatException(
-      {@required this.formatType, this.originalValue, this.customMessage})
+  InvalidFormatException(this.formatType,
+      {this.originalValue, this.customMessage})
       : super() {}
 
   @override

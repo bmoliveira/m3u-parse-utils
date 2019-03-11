@@ -22,7 +22,7 @@ class FileTypeHeader {
     else if (value.startsWith(FileTypeHeader.m3u.toString()))
       return FileTypeHeader.m3u;
     else
-      throw (InvalidFormatException(
-          formatType: InvalidFormatType.Header, originalValue: value));
+      throw (InvalidFormatException(InvalidFormatType.Header,
+          originalValue: value));
   }
 }

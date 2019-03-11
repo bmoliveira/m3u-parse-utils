@@ -14,7 +14,6 @@ import 'package:m3u/src/exception/InvalidFormatException.dart';
 /// to know the state of the current entry [_currentInfoEntry]
 /// and what type of line should come next [_nextLineExpected].
 class M3uParser {
-
   /// Parse a document represented by the [source]
   ///
   /// [source] a string value of the full document.
@@ -31,7 +30,7 @@ class M3uParser {
 
   /// Current holder of the information about the current Track
   EntryInformation _currentInfoEntry;
-  
+
   /// Result accumulator of the parser.
   List<M3uGenericEntry> _playlist = [];
 
@@ -84,8 +83,8 @@ class M3uParser {
       case FileTypeHeader.m3uPlus:
         return _regexParse(line);
       default:
-        throw InvalidFormatException(
-            formatType: InvalidFormatType.Other, originalValue: line);
+        throw InvalidFormatException(InvalidFormatType.Other,
+            originalValue: line);
     }
   }
 
