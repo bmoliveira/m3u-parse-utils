@@ -1,6 +1,7 @@
 # M3U format parser
 
-Simple parser for [M3U](https://en.wikipedia.org/wiki/M3U) and [M3U_Plus](https://en.wikipedia.org/wiki/M3U) files. 
+Simple parser for [M3U](https://en.wikipedia.org/wiki/M3U) and 
+[M3U_Plus](https://en.wikipedia.org/wiki/M3U) files. 
 
 ## How to use
 
@@ -21,3 +22,4 @@ main() async {
 - [ ] Parse info from the header
 - [ ] Parse start track info
 - [ ] Parse non string information ex: `aspect-ratio=4:3`
+
