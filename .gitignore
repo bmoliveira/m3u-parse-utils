@@ -8,10 +8,18 @@
 pubspec.lock
 build/
 
+// Dart generated documentation
+doc/api/
+
+// IntelliJ
 .idea/*
-doc/*
-
 *.iml
+*.ipr
+*.iws
 
+// Flutter android and ios folders
 android/*
 ios/*
+
+
+
