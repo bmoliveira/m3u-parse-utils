@@ -8,4 +8,5 @@
 pubspec.lock
 build/
 
-.idea/
+.idea/*
+docs/*
