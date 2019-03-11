@@ -1,4 +1,4 @@
-import 'package:m3u/Parser.dart';
+import 'package:m3u/parser.dart';
 import "package:test/test.dart";
 
 import '../utils/FileLoader.dart';

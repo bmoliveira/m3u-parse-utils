@@ -1,6 +1,6 @@
 library m3u;
 
-import 'package:m3u/Parser.dart';
+import 'package:m3u/parser.dart';
 import 'package:m3u/src/M3UParser.dart';
 
 export 'package:m3u/src/entries/GenericEntry.dart';
