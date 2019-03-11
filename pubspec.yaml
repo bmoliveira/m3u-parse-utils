@@ -1,0 +1,13 @@
+name: m3u
+version: 0.0.1
+homepage: https://github.com/bmoliveira/m3u-utils
+author: Bruno Oliveira
+description: M3U file parser and utils.
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+
+dev_dependencies:
+  test: ^1.3.0
