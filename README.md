@@ -8,7 +8,7 @@ Simple parser for [M3U](https://en.wikipedia.org/wiki/M3U) and
 Currently the parser only supports full file parsing.
 
 ```dart
-import 'package:m3u/Parser.dart';
+import 'package:m3u/m3u.dart';
 
 main() async {
   String playlistContent = <load_playlist>;
