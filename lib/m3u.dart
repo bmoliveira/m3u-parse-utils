@@ -10,5 +10,5 @@ export 'package:m3u/src/m3u_parser.dart';
 /// Parse a document represented by the [source]
 ///
 /// [source] a string value of the full document.
-Future<List<M3uGenericEntry>> parseFile(String source) async =>
+Future<> parseFile(String source) async =>
     M3uParser.parse(source);
