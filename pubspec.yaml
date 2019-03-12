@@ -1,5 +1,5 @@
 name: m3u
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/bmoliveira/m3u-parse-utils
 author: Bruno Oliveira <bm.oliveira.dev@gmail.com>
 description: Simple Dart tool to parse M3U and M3U_Plus files from a string or document string.
