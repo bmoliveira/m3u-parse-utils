@@ -1,5 +1,11 @@
-/// Exception thrown when an error occurs due to invalid Header format of a file.
+/// Exception thrown when an error occurs
+/// due to invalid Header format of a file.
 class InvalidFormatException implements Exception {
+  /// Creates the exception with the given parameters.
+  InvalidFormatException(this.formatType,
+      {this.originalValue, this.customMessage})
+      : super();
+
   /// Type of Error
   InvalidFormatType formatType;
 
@@ -9,26 +15,22 @@ class InvalidFormatException implements Exception {
   /// Optional message to give more debug options.
   String customMessage;
 
-  /// Creates the exception with the given parameters.
-  InvalidFormatException(this.formatType,
-      {this.originalValue, this.customMessage})
-      : super() {}
-
   @override
   String toString() {
-    var finalMessage = StringBuffer("");
+    final finalMessage = StringBuffer('');
 
     switch (formatType) {
-      case InvalidFormatType.Header:
-        finalMessage.writeln("Invalid Header found");
+      case InvalidFormatType.header:
+        finalMessage.writeln('Invalid Header found');
         break;
       default:
     }
 
     if (originalValue != null) {
-      finalMessage.write("Value: [");
-      finalMessage.write(originalValue);
-      finalMessage.writeln("]");
+      finalMessage
+        ..write('Value: [')
+        ..write(originalValue)
+        ..writeln(']');
     }
 
     if (customMessage != null) {
@@ -38,5 +40,12 @@ class InvalidFormatException implements Exception {
   }
 }
 
-/// Supported types of invalid  format exceptions.
-enum InvalidFormatType { Header, Other }
+/// Supported types of invalid format exceptions.
+enum InvalidFormatType {
+  /// Header with the information of the track/stream
+  /// title, and custom attributes
+  header,
+
+  /// Other kind of information, usually the link of the stream
+  other
+}

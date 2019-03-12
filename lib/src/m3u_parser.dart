@@ -1,10 +1,10 @@
 import 'dart:convert';
 
+import 'package:m3u/src/entries/generic_entry.dart';
 import 'package:m3u/src/entry_information.dart';
+import 'package:m3u/src/exception/invalid_format_exception.dart';
 import 'package:m3u/src/file_type_header.dart';
 import 'package:m3u/src/line_parsed_type.dart';
-import 'package:m3u/src/entries/generic_entry.dart';
-import 'package:m3u/src/exception/invalid_format_exception.dart';
 
 /// A parser of M3U documents.
 ///
@@ -17,22 +17,21 @@ class M3uParser {
   /// Parse a document represented by the [source]
   ///
   /// [source] a string value of the full document.
-  static Future<List<M3uGenericEntry>> parse(String source) async {
-    return M3uParser()._parse(source);
-  }
+  static Future<List<M3uGenericEntry>> parse(String source) async =>
+      M3uParser()._parse(source);
 
   /// Internally used after the header is parsed.
   FileTypeHeader _fileType;
 
   /// Controller for the current state of the parser
   /// This flag indicates the next type of data that we expect.
-  LineParsedType _nextLineExpected = LineParsedType.Header;
+  LineParsedType _nextLineExpected = LineParsedType.header;
 
   /// Current holder of the information about the current Track
   EntryInformation _currentInfoEntry;
 
   /// Result accumulator of the parser.
-  List<M3uGenericEntry> _playlist = [];
+  final List<M3uGenericEntry> _playlist = <M3uGenericEntry>[];
 
   /// Main parse function
   ///
@@ -42,36 +41,34 @@ class M3uParser {
   ///
   /// Can [throws] [InvalidFormatException] if the file is not supported.
   Future<List<M3uGenericEntry>> _parse(String source) async {
-    LineSplitter.split(source).forEach((line) {
-      _parseLine(line);
-    });
+    LineSplitter.split(source).forEach(_parseLine);
     return _playlist;
   }
 
-  void _parseLine(line) {
+  void _parseLine(String line) {
     switch (_nextLineExpected) {
-      case LineParsedType.Header:
+      case LineParsedType.header:
         _fileType = FileTypeHeader.fromString(line);
-        _nextLineExpected = LineParsedType.Info;
+        _nextLineExpected = LineParsedType.info;
         break;
-      case LineParsedType.Info:
+      case LineParsedType.info:
         final parsedEntry = _parseInfoRow(line, _fileType);
         if (parsedEntry == null) {
           break;
         }
         _currentInfoEntry = parsedEntry;
-        _nextLineExpected = LineParsedType.StreamLink;
+        _nextLineExpected = LineParsedType.source;
         break;
-      case LineParsedType.StreamLink:
+      case LineParsedType.source:
         if (_currentInfoEntry == null) {
-          _nextLineExpected = LineParsedType.Info;
+          _nextLineExpected = LineParsedType.info;
           _parseLine(line);
           break;
         }
         _playlist.add(M3uGenericEntry.fromEntryInformation(
             information: _currentInfoEntry, link: line));
         _currentInfoEntry = null;
-        _nextLineExpected = LineParsedType.Info;
+        _nextLineExpected = LineParsedType.info;
         break;
     }
   }
@@ -83,7 +80,7 @@ class M3uParser {
       case FileTypeHeader.m3uPlus:
         return _regexParse(line);
       default:
-        throw InvalidFormatException(InvalidFormatType.Other,
+        throw InvalidFormatException(InvalidFormatType.other,
             originalValue: line);
     }
   }
@@ -91,17 +88,18 @@ class M3uParser {
   /// This parses the metadata information of a line.
   /// This is a Regex parser caution is advised.
   EntryInformation _regexParse(String line) {
-    RegExp exp = new RegExp(r' (.*?)=\"(.*?)"|,(.*)');
-    final matches = exp.allMatches(line);
-    Map<String, String> attributes = Map();
-    String title = "";
+    final regexExpression = RegExp(r' (.*?)=\"(.*?)"|,(.*)');
+    final matches = regexExpression.allMatches(line);
+    final attributes = <String, String>{};
+    var title = '';
+
     matches.forEach((match) {
       if (match[1] != null && match[2] != null) {
         attributes[match[1]] = match[2];
       } else if (match[3] != null) {
         title = match[3];
       } else {
-        print("ERROR regexing against -> ${match[0]}");
+        print('ERROR regexing against -> ${match[0]}');
       }
     });
     return EntryInformation(title: title, attributes: attributes);
