@@ -1,4 +1,4 @@
-import 'package:m3u/parser.dart';
+import 'package:m3u/m3u.dart';
 
 /// Enum like class to represent the available parse types of the library.
 class FileTypeHeader {

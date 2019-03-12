@@ -1,4 +1,4 @@
-import 'package:m3u/src/EntryInformation.dart';
+import 'package:m3u/src/entry_information.dart';
 
 /// An entry on a Playlist it can be a simple entry, without attributes,
 /// or an entry with custom attributes.
