@@ -1,4 +1,9 @@
-## 1.0 - Release version
+## 1.0.1 - Release version
+
+- Added example to project.
+
+
+## 1.0.0 - Release version
 
 - Refactored the project to have it Dart appropriate
 - Changed the main import file
