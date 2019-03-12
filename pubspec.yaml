@@ -1,5 +1,5 @@
 name: m3u
-version: 0.0.3
+version: 1.0
 homepage: https://github.com/bmoliveira/m3u-parse-utils
 author: Bruno Oliveira <bm.oliveira.dev@gmail.com>
 description: M3U file parser.
