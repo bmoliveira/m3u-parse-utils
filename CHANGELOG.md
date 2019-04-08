@@ -1,3 +1,7 @@
+## 1.0.3 - Bug fixing
+
+- Reduced the version of meta used in order to work with flutter
+
 ## 1.0.2 - Sort tracks by an attribute
 
 - Added an Helper to sort tracks by a specific attribute.
