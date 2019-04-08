@@ -1,0 +1,11 @@
+#EXTM3U url-tvg="http://www.teleguide.info/download/new3/jtv.zip" m3uautoload=1 cache=500 deinterlace=1 tvg-shift=0
+#EXTINF:-1 mono=1 aspect-ratio=4:3 tvg-name="Первый_канал" group-title="Смоленский эфир" ,Первый канал
+udp://@239.255.1.2:5510
+#EXTINF:-1 mono=1 aspect-ratio=4:3 tvg-name="Россия_1" group-title="Group 1",Россия 1
+udp://@239.255.1.8:5510
+#EXTINF:-1 mono=1 aspect-ratio=4:3 tvg-name="НТВ" tvg-logo="НТВ" group-title="Group 2",НТВ (Смоленск)
+udp://@239.255.1.1:5510
+#EXTINF:-1 mono=1 aspect-ratio=4:3 tvg-name="TV5" group-title="Group 1",5 канал
+udp://@239.255.1.7:5510
+#EXTINF:-1 mono=1 aspect-ratio=4:3 tvg-name="Россия_24" group-title="Group 1",Россия 24
+udp://@239.255.1.5:5510
