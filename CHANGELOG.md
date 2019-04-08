@@ -1,3 +1,7 @@
+## 1.0.2 - Sort tracks by an attribute
+
+- Added an Helper to sort tracks by a specific attribute.
+
 ## 1.0.1 - Release version
 
 - Added example to project.

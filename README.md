@@ -13,6 +13,11 @@ import 'package:m3u/m3u.dart';
 main() async {
   String playlistContent = <load_playlist>;
   final playlist = await M3uParser.parse(file);
+  
+  // Organized categories
+  final categories =
+      sortedCategories(entries: listOfTracks, attributeName: 'group-title');
+  print(categories);
 }
 ```
 
