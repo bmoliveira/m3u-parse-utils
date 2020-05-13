@@ -8,7 +8,7 @@ class M3uGenericEntry {
   /// [title] of the track/stream
   /// [attributes] custom attributes, can be null
   /// [link] the link to the source of the track/stream
-  M3uGenericEntry({this.title, this.attributes, this.link});
+  M3uGenericEntry({this.title, this.attributes, this.link, this.duration});
 
   /// Constructor from an [EntryInformation] that only hold the title
   /// and attributes of a track/stream
@@ -17,7 +17,8 @@ class M3uGenericEntry {
       M3uGenericEntry(
           title: information.title,
           attributes: information.attributes,
-          link: link);
+          link: link,
+          duration: information.duration);
 
   /// Hold the information about the track.
   /// This is a raw string there are some formats specific to playlists, but
@@ -31,6 +32,10 @@ class M3uGenericEntry {
 
   /// Source of the track/stream url that points to a track/stream
   String link;
+
+  /// Duration is the seconds in the numeric part of `#EXTINF:191`
+  /// It is -1 if not present or parsing fails
+  int duration;
 
   /// Simple representation of the object on a string.
   @override
