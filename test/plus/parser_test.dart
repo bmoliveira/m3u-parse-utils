@@ -16,7 +16,6 @@ void main() {
     expect(testSubject.attributes['group-title'], 'The Only one');
     expect(testSubject.title, 'A TV channel');
     expect(testSubject.link, 'https://vimeo.com/63031638');
-
     expect(testSubject.duration, -1);
   });
 

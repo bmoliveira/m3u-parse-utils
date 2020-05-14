@@ -17,6 +17,6 @@ class EntryInformation {
   Map<String, String> attributes;
 
   /// Duration is the seconds in the numeric part of `#EXTINF:191`
-  /// It is -1 if not present or parsing fails
+  /// It is null if not present or parsing fails
   int duration;
 }
