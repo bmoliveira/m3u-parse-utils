@@ -24,7 +24,6 @@ main() async {
 ## Missing features
 
 - [ ] Parse from a stream of data instead of a string
-- [ ] Parse the number next to the EXTINF Ex: `#EXTINF:-1`
 - [ ] Parse info from the header
 - [ ] Parse start track info
 - [ ] Parse non string information ex: `aspect-ratio=4:3`
