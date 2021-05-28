@@ -8,7 +8,7 @@ void main() {
     expect(
         () async => parseFile(
             await FileUtils.loadFile(fileName: 'generic/invalid_header')),
-        throwsA(predicate((exception) =>
+        throwsA(predicate((dynamic exception) =>
             exception is InvalidFormatException &&
             exception.formatType == InvalidFormatType.header)));
   });

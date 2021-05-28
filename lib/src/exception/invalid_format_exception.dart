@@ -10,10 +10,10 @@ class InvalidFormatException implements Exception {
   InvalidFormatType formatType;
 
   /// Option extra parameter that represent the value given to throw this error.
-  String originalValue;
+  String? originalValue;
 
   /// Optional message to give more debug options.
-  String customMessage;
+  String? customMessage;
 
   @override
   String toString() {

@@ -21,8 +21,8 @@ Future<List<M3uGenericEntry>> parseFile(String source) async =>
 /// [defaultAttribute] when the attribute is not found category
 /// to merge properties.
 Map<String, List<M3uGenericEntry>> sortedCategories(
-        {@required List<M3uGenericEntry> entries,
-        @required String attributeName,
+        {required List<M3uGenericEntry> entries,
+        required String attributeName,
         String defaultAttribute = 'other'}) =>
     PlaylistHelper.sortedCategories(
         entries: entries,
