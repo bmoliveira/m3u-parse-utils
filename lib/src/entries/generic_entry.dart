@@ -8,12 +8,13 @@ class M3uGenericEntry {
   /// [title] of the track/stream
   /// [attributes] custom attributes, can be null
   /// [link] the link to the source of the track/stream
-  M3uGenericEntry({this.title, this.attributes, this.link});
+  M3uGenericEntry(
+      {required this.title, required this.attributes, required this.link});
 
   /// Constructor from an [EntryInformation] that only hold the title
   /// and attributes of a track/stream
   factory M3uGenericEntry.fromEntryInformation(
-          {EntryInformation information, String link}) =>
+          {required EntryInformation information, required String link}) =>
       M3uGenericEntry(
           title: information.title,
           attributes: information.attributes,
@@ -27,7 +28,7 @@ class M3uGenericEntry {
   /// Attributes parsed from the line of metadata
   /// Ex:
   /// `#EXTINF:-1 tvg-id="identifier" group-title="The Only one",A TV channel`
-  Map<String, String> attributes;
+  Map<String, String?> attributes;
 
   /// Source of the track/stream url that points to a track/stream
   String link;

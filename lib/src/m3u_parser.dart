@@ -21,14 +21,14 @@ class M3uParser {
       M3uParser()._parse(source);
 
   /// Internally used after the header is parsed.
-  FileTypeHeader _fileType;
+  FileTypeHeader? _fileType;
 
   /// Controller for the current state of the parser
   /// This flag indicates the next type of data that we expect.
   LineParsedType _nextLineExpected = LineParsedType.header;
 
   /// Current holder of the information about the current Track
-  EntryInformation _currentInfoEntry;
+  EntryInformation? _currentInfoEntry;
 
   /// Result accumulator of the parser.
   final List<M3uGenericEntry> _playlist = <M3uGenericEntry>[];
@@ -66,14 +66,14 @@ class M3uParser {
           break;
         }
         _playlist.add(M3uGenericEntry.fromEntryInformation(
-            information: _currentInfoEntry, link: line));
+            information: _currentInfoEntry!, link: line));
         _currentInfoEntry = null;
         _nextLineExpected = LineParsedType.info;
         break;
     }
   }
 
-  EntryInformation _parseInfoRow(String line, FileTypeHeader fileType) {
+  EntryInformation? _parseInfoRow(String line, FileTypeHeader? fileType) {
     switch (fileType) {
       case FileTypeHeader.m3u:
         return _regexParse(line);
@@ -90,18 +90,18 @@ class M3uParser {
   EntryInformation _regexParse(String line) {
     final regexExpression = RegExp(r' (.*?)=\"(.*?)"|,(.*)');
     final matches = regexExpression.allMatches(line);
-    final attributes = <String, String>{};
-    var title = '';
+    final attributes = <String, String?>{};
+    String? title = '';
 
     matches.forEach((match) {
       if (match[1] != null && match[2] != null) {
-        attributes[match[1]] = match[2];
+        attributes[match[1]!] = match[2];
       } else if (match[3] != null) {
         title = match[3];
       } else {
         print('ERROR regexing against -> ${match[0]}');
       }
     });
-    return EntryInformation(title: title, attributes: attributes);
+    return EntryInformation(title: title!, attributes: attributes);
   }
 }
