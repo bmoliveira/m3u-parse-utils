@@ -4,7 +4,9 @@ class EntryInformation {
   /// Base information of the metadata of a stream/track
   /// [title] of the track/stream
   /// [attributes] the attributes of the stream, they can be null
-  EntryInformation({required this.title, required this.attributes});
+  /// [duration] the duration of the stream in seconds, can be null
+  EntryInformation(
+      {required this.title, required this.attributes, this.duration});
 
   /// Hold the information about the track.
   /// This is a raw string there are some formats specific to playlists, but
@@ -15,4 +17,8 @@ class EntryInformation {
   /// Ex:
   /// `#EXTINF:-1 tvg-id="identifier" group-title="The Only one",A TV channel`
   Map<String, String?> attributes;
+
+  /// Duration is the seconds in the numeric part of `#EXTINF:191`
+  /// It is null if not present or parsing fails
+  int? duration;
 }
