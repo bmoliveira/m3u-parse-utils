@@ -92,6 +92,7 @@ class M3uParser {
     final matches = regexExpression.allMatches(line);
     final attributes = <String, String?>{};
     String? title = '';
+    int? duration;
 
     matches.forEach((match) {
       if (match[1] != null && match[2] != null) {
@@ -102,6 +103,14 @@ class M3uParser {
         print('ERROR regexing against -> ${match[0]}');
       }
     });
-    return EntryInformation(title: title!, attributes: attributes);
+
+    final durExpression = RegExp(r'#EXTINF:([-0-9]+)');
+    final durMatch = durExpression.firstMatch(line);
+    if (durMatch != null) {
+      duration = int.tryParse(durMatch.group(1)!);
+    }
+
+    return EntryInformation(
+        title: title!, attributes: attributes, duration: duration);
   }
 }
