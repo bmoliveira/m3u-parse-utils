@@ -5,7 +5,7 @@ author: Bruno Oliveira <bm.oliveira.dev@gmail.com>
 description: Simple Dart tool to parse M3U and M3U_Plus files from a string or document string.
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   meta: ^1.1.5
