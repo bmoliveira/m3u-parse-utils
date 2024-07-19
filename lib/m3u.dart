@@ -1,7 +1,6 @@
 library m3u;
 
 import 'package:m3u/m3u.dart';
-import 'package:m3u/src/m3u_parser.dart';
 import 'package:m3u/src/playlist_helper.dart';
 import 'package:meta/meta.dart';
 
